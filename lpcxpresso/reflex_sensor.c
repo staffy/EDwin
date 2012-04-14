@@ -1,6 +1,5 @@
 /*
  * reflex_sensor.c
- *
  *  Created on: 15 mar 2012
  *      Author: Rickard
  */
