@@ -7,7 +7,13 @@
 
 #ifndef REFLEX_SENSOR_H_
 #define REFLEX_SENSOR_H_
-
+/*
+ * Sensorer på pin:
+ * P0.11
+ * P1.0
+ * P1.1
+ * P1.2
+ */
 // Includes
 #ifdef __USE_CMSIS
 #include "LPC13xx.h"
