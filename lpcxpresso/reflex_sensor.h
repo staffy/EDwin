@@ -19,12 +19,17 @@
 #include "LPC13xx.h"
 #endif
 #include "gpio.h"
+#include "adc.h"
 #include "drive.h"
 // User defines
+#define REFLEX_NUM 4
 
+// Global variables
+volatile uint32_t reflexValue[REFLEX_NUM];
 // Functions
 void initReflex(void);
-void PIOINT2_IRQHandler(void);
-void PIOINT3_IRQHandler(void);
+uint16_t reflexRead();
+//void PIOINT2_IRQHandler(void);
+//void PIOINT3_IRQHandler(void);
 
 #endif /* REFLEX_SENSOR_H_ */

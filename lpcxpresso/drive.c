@@ -4,7 +4,7 @@
  *  Created on: 13 mar 2012
  *      Author: Rickard
  */
-
+//PWM 1.6 1.7
 #include "drive.h"
 
 /*
@@ -20,22 +20,21 @@ void initDrive(void)
 	LPC_GPIO1->DIR |= (1 << 8);				// Port1 bit8 OUTPUT, Right_Enable
 	disable_engines();
 	set_movement(2);
-	//PWM 1.9 0.10
-	LPC_SYSCON->SYSAHBCLKCTRL |= (1 << 8);	// Enable clock to timer 1, CT16B1
+	LPC_SYSCON->SYSAHBCLKCTRL |= (1 << 9);	// Enable clock to timer 0, CT32B0
 	//LPC_IOCON->PIO1_9 |= (1 << 0);        // set bit 0 to connect pin to CT16B1_MAT0
 	//LPC_IOCON->PIO1_9 |= (1 << 1);        	// set bit 1 to connect pin 10 to CT16B1_MAT1
-	LPC_IOCON->PIO1_9 &= ~0x1F;
-	LPC_IOCON->PIO1_9 |= 0x01;
-	LPC_IOCON->PIO1_10 &= ~0x1F;     // - remove bits 0,1 & 2 and pull resistors
-	LPC_IOCON->PIO1_10 |= 0x02;        /* Timer1_16 MAT1 */
-	LPC_TMR16B1->MCR |= (1 << 10);			// Reset TC counter when it reaches Match Register 3 value
+	LPC_IOCON->PIO1_6 &= ~0x1F;			// - remove bits 0,1 & 2 and pull resistors
+	LPC_IOCON->PIO1_6 |= 0x02;			//CT32B0_MAT0
+	LPC_IOCON->PIO1_7 &= ~0x1F;     	// - remove bits 0,1 & 2 and pull resistors
+	LPC_IOCON->PIO1_7 |= 0x02;        	/* CT32B0_MAT1 */
+	LPC_TMR32B0->MCR |= (1 << 10);			// Reset TC counter when it reaches Match Register 3 value
 	//LPC_TMR16B1->PR = 72;					// Prescale 347
-	LPC_TMR16B1->MR0 = TimerCount;          // TMR16B1 Match register 0
-	LPC_TMR16B1->MR1 = TimerCount;          // TMR16B1 Match register 1
-	LPC_TMR16B1->MR3 = TimerCount;//4096;            	// Cycle length 4096 (= 50.6574Hz) - Match register 3
-	LPC_TMR16B1->PWMC |= 3;					// Timer 1 MAT0 and MAT1 is PWM
+	LPC_TMR32B0->MR0 = TimerCount;          // TMR32B0 Match register 0
+	LPC_TMR32B0->MR1 = TimerCount;          // TMR32B0 Match register 1
+	LPC_TMR32B0->MR3 = TimerCount;//4096;            	// Cycle length 4096 (= 50.6574Hz) - Match register 3
+	LPC_TMR32B0->PWMC |= 3;					// Timer 1 MAT0 and MAT1 is PWM
 
-	LPC_TMR16B1->TCR = 1;    				// enable timer 1
+	LPC_TMR32B0->TCR = 1;    				// enable timer 1
 	set_speed_right(40);
 	set_speed_left(80);
 	return;
@@ -43,7 +42,7 @@ void initDrive(void)
 
 void set_speed_left(int percent)
 {
-	LPC_TMR16B1->MR0 = TimerCount-percent*(TimerCount-0.05*TimerCount)/100;
+	LPC_TMR32B0->MR0 = TimerCount-percent*(TimerCount-0.05*TimerCount)/100;
 	speed_left=percent;
 }
 /*
@@ -53,7 +52,7 @@ void set_speed_left(int percent)
  */
 void set_speed_right(int percent)		// percent1 = 0 => neutral, percent1 < 0 => reverse, percent1 > 0 => forward ; range: -100 to 100
 {
-	LPC_TMR16B1->MR1 = TimerCount-percent*(TimerCount-0.05*TimerCount)/100;
+	LPC_TMR32B0->MR1 = TimerCount-percent*(TimerCount-0.05*TimerCount)/100;
 	//LPC_TMR16B1->MR1 = 2399-percent*(2399-20)/100;
 	speed_right=percent;
 	return;
@@ -97,5 +96,3 @@ void set_movement(int movement)
 		break;
 	}
 }
-
-

@@ -5,9 +5,23 @@
  */
 #include "reflex_sensor.h"
 
+uint16_t reflexRead()
+{
+	uint32_t i;
+	for ( i = 0; i < REFLEX_NUM; i++ )
+	{
+		reflexValue[i] = ADCRead( 1 );
+		if( reflexValue[i] >= 100 )
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
 void initReflex()		// Enables interrupt on Port0 bit2
 {
-	LPC_SYSCON->SYSAHBCLKCTRL |= (1 << 6);		// Enable clock for GPIO
+	/*LPC_SYSCON->SYSAHBCLKCTRL |= (1 << 6);		// Enable clock for GPIO
 	NVIC_EnableIRQ(EINT0_IRQn);					// Enable external interrupt
 	LPC_GPIO0->DIR &= ~(1 << 2);        		// Port0 bit2 input
 	LPC_GPIO0->IS &= ~(1 << 2);					// Trigger on edge
@@ -15,7 +29,7 @@ void initReflex()		// Enables interrupt on Port0 bit2
 	LPC_GPIO0->IEV |= (1 << 2);					// int on 5v pos edge
 	LPC_GPIO0->IE |= (1 << 2);					// Enable interrupt
 	return;
-
+	 */
 	/* use as input event, interrupt test. */
 	/*
 	GPIOSetDir( PORT2, 0, 0 );
@@ -35,6 +49,7 @@ void initReflex()		// Enables interrupt on Port0 bit2
 	GPIOIntEnable( PORT3, 0 );
 	GPIOIntEnable( PORT3, 1 );*/
 }
+/*
 void PIOINT0_IRQHandler(void)		// Front sensors
 {
 	set_movement(1);
@@ -65,3 +80,4 @@ void PIOINT3_IRQHandler(void)		// back sensors
 
 //void
 
+*/
