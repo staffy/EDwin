@@ -1,0 +1,511 @@
+Archive member included because of file (symbol)
+
+C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+                              ./src/cr_startup_lpc13.o (SystemInit)
+c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(__weak__main.o)
+                              ./src/cr_startup_lpc13.o (__main)
+c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+                              ./src/drive.o (__aeabi_dmul)
+
+Allocating common symbols
+Common symbol       size              file
+
+TimerCount          0x2               ./src/drive.o
+speed_right         0x4               ./src/drive.o
+speed_left          0x4               ./src/drive.o
+ADCValue            0x20              ./src/adc.o
+reflexValue         0x10              ./src/main.o
+
+Discarded input sections
+
+ .text          0x00000000        0x0 ./src/adc.o
+ .data          0x00000000        0x0 ./src/adc.o
+ .bss           0x00000000        0x0 ./src/adc.o
+ .bss.ADCIntDone
+                0x00000000        0x4 ./src/adc.o
+ .text.ADCBurstRead
+                0x00000000       0x7c ./src/adc.o
+ COMMON         0x00000000       0x20 ./src/adc.o
+ .text          0x00000000        0x0 ./src/cr_startup_lpc13.o
+ .data          0x00000000        0x0 ./src/cr_startup_lpc13.o
+ .bss           0x00000000        0x0 ./src/cr_startup_lpc13.o
+ .text          0x00000000        0x0 ./src/drive.o
+ .data          0x00000000        0x0 ./src/drive.o
+ .bss           0x00000000        0x0 ./src/drive.o
+ .text.enable_engines
+                0x00000000       0x28 ./src/drive.o
+ .text          0x00000000        0x0 ./src/gpio.o
+ .data          0x00000000        0x0 ./src/gpio.o
+ .bss           0x00000000        0x0 ./src/gpio.o
+ .text.NVIC_EnableIRQ
+                0x00000000       0x38 ./src/gpio.o
+ .rodata.LPC_GPIO
+                0x00000000       0x10 ./src/gpio.o
+ .text.GPIOInit
+                0x00000000       0x44 ./src/gpio.o
+ .text.GPIOSetInterrupt
+                0x00000000      0x574 ./src/gpio.o
+ .text.GPIOIntEnable
+                0x00000000      0x104 ./src/gpio.o
+ .text.GPIOIntDisable
+                0x00000000      0x114 ./src/gpio.o
+ .text.GPIOIntStatus
+                0x00000000      0x100 ./src/gpio.o
+ .text.GPIOIntClear
+                0x00000000      0x104 ./src/gpio.o
+ .text          0x00000000        0x0 ./src/main.o
+ .data          0x00000000        0x0 ./src/main.o
+ .bss           0x00000000        0x0 ./src/main.o
+ .bss.i.1776    0x00000000        0x4 ./src/main.o
+ .text          0x00000000        0x0 ./src/reflex_sensor.o
+ .data          0x00000000        0x0 ./src/reflex_sensor.o
+ .bss           0x00000000        0x0 ./src/reflex_sensor.o
+ .rodata.LPC_GPIO
+                0x00000000       0x10 ./src/reflex_sensor.o
+ .text.initReflex
+                0x00000000        0xc ./src/reflex_sensor.o
+ .text          0x00000000        0x0 ./src/sharp_sensor.o
+ .data          0x00000000        0x0 ./src/sharp_sensor.o
+ .bss           0x00000000        0x0 ./src/sharp_sensor.o
+ .text          0x00000000        0x0 C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+ .data          0x00000000        0x0 C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+ .bss           0x00000000        0x0 C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+ .text.SystemCoreClockUpdate
+                0x00000000       0xa4 C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+ .rodata.CSWTCH.6
+                0x00000000       0x40 C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+ .text          0x00000000        0x0 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(__weak__main.o)
+ .data          0x00000000        0x0 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(__weak__main.o)
+ .bss           0x00000000        0x0 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(__weak__main.o)
+ .text          0x00000000        0x0 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .data          0x00000000        0x0 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .bss           0x00000000        0x0 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_drsub
+                0x00000000       0x1c c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_dneg
+                0x00000000        0xc c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_d2f
+                0x00000000       0x54 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_d2iz
+                0x00000000       0x3e c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_d2lz
+                0x00000000       0x64 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_d2ulz
+                0x00000000       0x50 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__bhs_ul2d
+                0x00000000       0x92 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_ui2d
+                0x00000000        0x8 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_l2d
+                0x00000000       0x16 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_ul2d
+                0x00000000        0x8 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_dcmpeq
+                0x00000000       0x36 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_dcmplt
+                0x00000000       0x5a c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_dcmpgt
+                0x00000000       0x58 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_dcmple
+                0x00000000       0x5a c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_dcmpge
+                0x00000000       0x5a c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_dcmpun
+                0x00000000       0x1a c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_cdcmple
+                0x00000000       0x30 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+ .text.__aeabi_cdrcmple
+                0x00000000       0x16 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+MFlash32         0x00000000         0x00008000         xr
+RamLoc8          0x10000000         0x00002000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD ./src/adc.o
+LOAD ./src/cr_startup_lpc13.o
+LOAD ./src/drive.o
+LOAD ./src/gpio.o
+LOAD ./src/main.o
+LOAD ./src/reflex_sensor.o
+LOAD ./src/sharp_sensor.o
+LOAD C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a
+START GROUP
+LOAD c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/../../../../arm-none-eabi/lib/thumb2\libcr_c.a
+LOAD c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a
+END GROUP
+                0x00008000                __top_MFlash32 = 0x8000
+                0x10002000                __top_RamLoc8 = 0x10002000
+
+.text           0x00000000     0x139c
+ FILL mask 0xff
+ *(.isr_vector)
+ .isr_vector    0x00000000      0x128 ./src/cr_startup_lpc13.o
+                0x00000000                g_pfnVectors
+                0x00000128                . = ALIGN (0x4)
+                0x00000128                __section_table_start = .
+                0x00000128                __data_section_table = .
+                0x00000128        0x4 LONG 0x139c LOADADDR (.data)
+                0x0000012c        0x4 LONG 0x10000000 ADDR (.data)
+                0x00000130        0x4 LONG 0x4 SIZEOF (.data)
+                0x00000134                __data_section_table_end = .
+                0x00000134                __bss_section_table = .
+                0x00000134        0x4 LONG 0x10000004 ADDR (.bss)
+                0x00000138        0x4 LONG 0x1c SIZEOF (.bss)
+                0x0000013c                __bss_section_table_end = .
+                0x0000013c                __section_table_end = .
+ *(.after_vectors*)
+ .after_vectors
+                0x0000013c       0x78 ./src/cr_startup_lpc13.o
+                0x0000013c                NMI_Handler
+                0x0000013e                HardFault_Handler
+                0x00000140                MemManage_Handler
+                0x00000142                BusFault_Handler
+                0x00000144                UsageFault_Handler
+                0x00000146                SVC_Handler
+                0x00000148                DebugMon_Handler
+                0x0000014a                PendSV_Handler
+                0x0000014c                SysTick_Handler
+                0x0000014e                data_init
+                0x00000160                bss_init
+                0x00000170                ResetISR
+                0x000001b0                SSP_IRQHandler
+                0x000001b0                PIOINT1_IRQHandler
+                0x000001b0                IntDefaultHandler
+                0x000001b0                TIMER16_1_IRQHandler
+                0x000001b0                USB_FIQHandler
+                0x000001b0                ADC_IRQHandler
+                0x000001b0                SSP1_IRQHandler
+                0x000001b0                PIOINT2_IRQHandler
+                0x000001b0                USB_IRQHandler
+                0x000001b0                BOD_IRQHandler
+                0x000001b0                WAKEUP_IRQHandler
+                0x000001b0                PIOINT0_IRQHandler
+                0x000001b0                I2C_IRQHandler
+                0x000001b0                TIMER32_0_IRQHandler
+                0x000001b0                WDT_IRQHandler
+                0x000001b0                UART_IRQHandler
+                0x000001b0                TIMER32_1_IRQHandler
+                0x000001b0                PIOINT3_IRQHandler
+                0x000001b0                TIMER16_0_IRQHandler
+                0x000001b0                FMC_IRQHandler
+                0x000002fc                . = 0x2fc
+ *fill*         0x000001b4      0x148 ff
+                0x000002fc                PROVIDE (__CRP_WORD_START__, .)
+ *(.crp)
+ .crp           0x000002fc        0x4 ./src/main.o
+                0x000002fc                CRP_WORD
+                0x00000300                PROVIDE (__CRP_WORD_END__, .)
+                0x00000001                ASSERT (! ((__CRP_WORD_START__ == __CRP_WORD_END__)), Linker CRP Enabled, but no CRP_WORD provided within application)
+ *(.text*)
+ .text.GPIOSetDir
+                0x00000300       0x90 ./src/adc.o
+ .text.ADCInit  0x00000390      0x158 ./src/adc.o
+                0x00000390                ADCInit
+ .text.ADCRead  0x000004e8       0xbc ./src/adc.o
+                0x000004e8                ADCRead
+ .text.GPIOSetValue
+                0x000005a4       0x3c ./src/drive.o
+ .text.initDrive
+                0x000005e0      0x1bc ./src/drive.o
+                0x000005e0                initDrive
+ *fill*         0x0000079c        0x4 00
+ .text.set_speed_left
+                0x000007a0       0xd8 ./src/drive.o
+                0x000007a0                set_speed_left
+ .text.set_speed_right
+                0x00000878       0xd8 ./src/drive.o
+                0x00000878                set_speed_right
+ .text.disable_engines
+                0x00000950       0x28 ./src/drive.o
+                0x00000950                disable_engines
+ .text.set_direction
+                0x00000978       0x34 ./src/drive.o
+                0x00000978                set_direction
+ .text.set_movement
+                0x000009ac       0x68 ./src/drive.o
+                0x000009ac                set_movement
+ .text.NVIC_SetPriority
+                0x00000a14       0x5c ./src/main.o
+ .text.SysTick_Config
+                0x00000a70       0x64 ./src/main.o
+ .text.GPIOSetValue
+                0x00000ad4       0x3c ./src/main.o
+ .text.GPIOSetDir
+                0x00000b10       0x90 ./src/main.o
+ .text.main     0x00000ba0       0xac ./src/main.o
+                0x00000ba0                main
+ .text.reflexRead
+                0x00000c4c       0x50 ./src/reflex_sensor.o
+                0x00000c4c                reflexRead
+ .text.SystemInit
+                0x00000c9c       0xbc C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+                0x00000c9c                SystemInit
+ .text.__weak_main
+                0x00000d58        0x4 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(__weak__main.o)
+                0x00000d58                __weak_main
+                0x00000d58                __main
+ .text.__aeabi_dmul
+                0x00000d5c      0x128 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+                0x00000d5c                __aeabi_dmul
+ .text.__aeabi_ddiv
+                0x00000e84      0x144 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+                0x00000e84                __aeabi_ddiv
+ .text.__aeabi_dsub
+                0x00000fc8      0x1d8 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+                0x00000fc8                __aeabi_dsub
+ .text.__aeabi_dadd
+                0x000011a0      0x13c c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+                0x000011a0                __aeabi_dadd
+ .text.__aeabi_d2uiz
+                0x000012dc       0x30 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+                0x000012dc                __aeabi_d2uiz
+ .text.__bhs_ui2d
+                0x0000130c       0x50 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+                0x0000130c                __bhs_ui2d
+ .text.__aeabi_i2d
+                0x0000135c       0x10 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+                0x0000135c                __aeabi_i2d
+ *(.rodata .rodata.*)
+ .rodata.LPC_GPIO
+                0x0000136c       0x10 ./src/adc.o
+ .rodata.LPC_GPIO
+                0x0000137c       0x10 ./src/drive.o
+ .rodata.LPC_GPIO
+                0x0000138c       0x10 ./src/main.o
+                0x0000139c                . = ALIGN (0x4)
+
+.glue_7         0x0000139c        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x0000139c        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x0000139c        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x0000139c        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x0000139c                __exidx_start = .
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x0000139c                __exidx_end = .
+                0x0000139c                _etext = .
+
+.uninit_RESERVED
+ *(.bss.$RESERVED*)
+
+.data           0x10000000        0x4 load address 0x0000139c
+ FILL mask 0xff
+                0x10000000                _data = .
+ *(vtable)
+ *(.data*)
+ .data.SystemCoreClock
+                0x10000000        0x4 C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+                0x10000000                SystemCoreClock
+                0x10000004                . = ALIGN (0x4)
+                0x10000004                _edata = .
+
+.bss            0x10000004       0x1c load address 0x000013a0
+                0x10000004                _bss = .
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x10000004        0xc ./src/drive.o
+                0x10000004                TimerCount
+                0x10000008                speed_right
+                0x1000000c                speed_left
+ COMMON         0x10000010       0x10 ./src/main.o
+                0x10000010                reflexValue
+                0x10000020                . = ALIGN (0x4)
+                0x10000020                _ebss = .
+                0x10000020                PROVIDE (end, .)
+                0x10000020                PROVIDE (_pvHeapStart, .)
+                0x10002000                PROVIDE (_vStackTop, (__top_RamLoc8 - 0x0))
+OUTPUT(Sumo_robot.axf elf32-littlearm)
+
+.debug_abbrev   0x00000000      0xb44
+ .debug_abbrev  0x00000000      0x1f3 ./src/adc.o
+ .debug_abbrev  0x000001f3      0x123 ./src/cr_startup_lpc13.o
+ .debug_abbrev  0x00000316      0x1be ./src/drive.o
+ .debug_abbrev  0x000004d4      0x1ea ./src/gpio.o
+ .debug_abbrev  0x000006be      0x204 ./src/main.o
+ .debug_abbrev  0x000008c2      0x14c ./src/reflex_sensor.o
+ .debug_abbrev  0x00000a0e       0x16 ./src/sharp_sensor.o
+ .debug_abbrev  0x00000a24      0x120 C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+
+.debug_info     0x00000000     0x37ee
+ .debug_info    0x00000000      0xc1d ./src/adc.o
+ .debug_info    0x00000c1d      0x315 ./src/cr_startup_lpc13.o
+ .debug_info    0x00000f32      0xcbc ./src/drive.o
+ .debug_info    0x00001bee      0xae6 ./src/gpio.o
+ .debug_info    0x000026d4      0x88d ./src/main.o
+ .debug_info    0x00002f61      0x2bb ./src/reflex_sensor.o
+ .debug_info    0x0000321c       0x29 ./src/sharp_sensor.o
+ .debug_info    0x00003245      0x5a9 C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+
+.debug_line     0x00000000     0x1e1b
+ .debug_line    0x00000000      0x41d ./src/adc.o
+ .debug_line    0x0000041d      0x416 ./src/cr_startup_lpc13.o
+ .debug_line    0x00000833      0x462 ./src/drive.o
+ .debug_line    0x00000c95      0x4ac ./src/gpio.o
+ .debug_line    0x00001141      0x4dc ./src/main.o
+ .debug_line    0x0000161d      0x3f7 ./src/reflex_sensor.o
+ .debug_line    0x00001a14       0x36 ./src/sharp_sensor.o
+ .debug_line    0x00001a4a      0x3d1 C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+
+.debug_macinfo  0x00000000    0x312a4
+ .debug_macinfo
+                0x00000000     0x6c6e ./src/adc.o
+ .debug_macinfo
+                0x00006c6e     0x6bc6 ./src/cr_startup_lpc13.o
+ .debug_macinfo
+                0x0000d834     0x6c0f ./src/drive.o
+ .debug_macinfo
+                0x00014443     0x6b9d ./src/gpio.o
+ .debug_macinfo
+                0x0001afe0     0x7022 ./src/main.o
+ .debug_macinfo
+                0x00022002     0x6d07 ./src/reflex_sensor.o
+ .debug_macinfo
+                0x00028d09     0x16a3 ./src/sharp_sensor.o
+ .debug_macinfo
+                0x0002a3ac     0x6ef8 C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+
+.debug_loc      0x00000000      0x77b
+ .debug_loc     0x00000000       0xd4 ./src/adc.o
+ .debug_loc     0x000000d4      0x1b8 ./src/cr_startup_lpc13.o
+ .debug_loc     0x0000028c      0x19c ./src/drive.o
+ .debug_loc     0x00000428      0x17c ./src/gpio.o
+ .debug_loc     0x000005a4      0x10c ./src/main.o
+ .debug_loc     0x000006b0       0x64 ./src/reflex_sensor.o
+ .debug_loc     0x00000714       0x67 C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+
+.debug_pubnames
+                0x00000000      0x3ca
+ .debug_pubnames
+                0x00000000       0x57 ./src/adc.o
+ .debug_pubnames
+                0x00000057      0x115 ./src/cr_startup_lpc13.o
+ .debug_pubnames
+                0x0000016c       0xbf ./src/drive.o
+ .debug_pubnames
+                0x0000022b       0x7c ./src/gpio.o
+ .debug_pubnames
+                0x000002a7       0x66 ./src/main.o
+ .debug_pubnames
+                0x0000030d       0x6e ./src/reflex_sensor.o
+ .debug_pubnames
+                0x0000037b       0x4f C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+
+.debug_pubtypes
+                0x00000000      0x2ec
+ .debug_pubtypes
+                0x00000000       0x8d ./src/adc.o
+ .debug_pubtypes
+                0x0000008d       0x1e ./src/cr_startup_lpc13.o
+ .debug_pubtypes
+                0x000000ab       0x8e ./src/drive.o
+ .debug_pubtypes
+                0x00000139       0x88 ./src/gpio.o
+ .debug_pubtypes
+                0x000001c1       0x9c ./src/main.o
+ .debug_pubtypes
+                0x0000025d       0x4d ./src/reflex_sensor.o
+ .debug_pubtypes
+                0x000002aa       0x42 C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+
+.debug_aranges  0x00000000      0x1f0
+ .debug_aranges
+                0x00000000       0x38 ./src/adc.o
+ .debug_aranges
+                0x00000038       0x80 ./src/cr_startup_lpc13.o
+ .debug_aranges
+                0x000000b8       0x58 ./src/drive.o
+ .debug_aranges
+                0x00000110       0x50 ./src/gpio.o
+ .debug_aranges
+                0x00000160       0x40 ./src/main.o
+ .debug_aranges
+                0x000001a0       0x28 ./src/reflex_sensor.o
+ .debug_aranges
+                0x000001c8       0x28 C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+
+.debug_ranges   0x00000000      0x180
+ .debug_ranges  0x00000000       0x28 ./src/adc.o
+ .debug_ranges  0x00000028       0x70 ./src/cr_startup_lpc13.o
+ .debug_ranges  0x00000098       0x48 ./src/drive.o
+ .debug_ranges  0x000000e0       0x40 ./src/gpio.o
+ .debug_ranges  0x00000120       0x30 ./src/main.o
+ .debug_ranges  0x00000150       0x18 ./src/reflex_sensor.o
+ .debug_ranges  0x00000168       0x18 C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+
+.debug_str      0x00000000      0xe4e
+ .debug_str     0x00000000      0x649 ./src/adc.o
+                                0x685 (size before relaxing)
+ .debug_str     0x00000649      0x175 ./src/cr_startup_lpc13.o
+                                0x261 (size before relaxing)
+ .debug_str     0x000007be       0xbc ./src/drive.o
+                                0x6cd (size before relaxing)
+ .debug_str     0x0000087a      0x439 ./src/gpio.o
+                                0x850 (size before relaxing)
+ .debug_str     0x00000cb3       0xbd ./src/main.o
+                                0x648 (size before relaxing)
+ .debug_str     0x00000d70       0x2d ./src/reflex_sensor.o
+                                0x194 (size before relaxing)
+ .debug_str     0x00000d9d       0x16 ./src/sharp_sensor.o
+                                 0x6e (size before relaxing)
+ .debug_str     0x00000db3       0x9b C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+                                0x425 (size before relaxing)
+
+.comment        0x00000000       0x2a
+ .comment       0x00000000       0x2a ./src/adc.o
+                                 0x2b (size before relaxing)
+ .comment       0x00000000       0x2b ./src/cr_startup_lpc13.o
+ .comment       0x00000000       0x2b ./src/drive.o
+ .comment       0x00000000       0x2b ./src/gpio.o
+ .comment       0x00000000       0x2b ./src/main.o
+ .comment       0x00000000       0x2b ./src/reflex_sensor.o
+ .comment       0x00000000       0x2b ./src/sharp_sensor.o
+ .comment       0x00000000       0x2b C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+ .comment       0x00000000       0x2b c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(__weak__main.o)
+ .comment       0x00000000       0x2b c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+
+.ARM.attributes
+                0x00000000       0x31
+ .ARM.attributes
+                0x00000000       0x31 ./src/adc.o
+ .ARM.attributes
+                0x00000031       0x31 ./src/cr_startup_lpc13.o
+ .ARM.attributes
+                0x00000062       0x31 ./src/drive.o
+ .ARM.attributes
+                0x00000093       0x31 ./src/gpio.o
+ .ARM.attributes
+                0x000000c4       0x31 ./src/main.o
+ .ARM.attributes
+                0x000000f5       0x31 ./src/reflex_sensor.o
+ .ARM.attributes
+                0x00000126       0x31 ./src/sharp_sensor.o
+ .ARM.attributes
+                0x00000157       0x31 C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
+ .ARM.attributes
+                0x00000188       0x31 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/../../../../arm-none-eabi/lib/thumb2\libcr_c.a(__weak__main.o)
+ .ARM.attributes
+                0x000001b9       0x31 c:/nxp/lpcxpresso_4.2.0_264/lpcxpresso/tools/bin/../lib/gcc/arm-none-eabi/4.5.1/thumb2\libcr_eabihelpers.a(double.o)
+
+.debug_frame    0x00000000      0x46c
+ .debug_frame   0x00000000       0x80 ./src/adc.o
+ .debug_frame   0x00000080       0xf0 ./src/cr_startup_lpc13.o
+ .debug_frame   0x00000170      0x110 ./src/drive.o
+ .debug_frame   0x00000280       0xd4 ./src/gpio.o
+ .debug_frame   0x00000354       0xa0 ./src/main.o
+ .debug_frame   0x000003f4       0x48 ./src/reflex_sensor.o
+ .debug_frame   0x0000043c       0x30 C:\Users\Rickard\Documents\LPCXpresso_4.2.0_264\Sumo_robot\CMSISv2p00_LPC13xx\Debug\libCMSISv2p00_LPC13xx.a(system_LPC13xx.o)
