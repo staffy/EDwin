@@ -36,7 +36,8 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 int main(void) {
 	//GPIOInit();
 	SysTick_Config( SystemCoreClock/1000 );
-	initDrive();
+	SysTick->CTRL &= (0 << 1);
+	//initDrive();
 	ADCInit( ADC_CLK );
 	//initReflex();
 	//GPIOSetDir( 3, 2, 1 );
@@ -44,15 +45,20 @@ int main(void) {
 	GPIOSetDir( LED_PORT, LED_BIT, 1 );
 	GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
 	GPIOSetDir( 3, 2, 1 );
-	GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
 	// Enter an infinite loop, just incrementing a counter
 	volatile static int i = 0 ;
 	while(1)
 	{
-		if(reflexRead())
+		//uint16_t adcValue = ADCRead( 5 );
+		if(reflexRead())//adcValue > 100)
 		{
 			GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
 		}
+		else
+		{
+			GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
+		}
+		//i++;
 	}
 	return 0 ;
 }

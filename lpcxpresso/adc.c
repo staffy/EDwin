@@ -135,40 +135,41 @@ void ADCInit( uint32_t ADC_Clk )
 
   /* Enable AHB clock to the ADC. */
   LPC_SYSCON->SYSAHBCLKCTRL |= (1<<13);
-
+  GPIOSetDir( 1, 4, 0 );
+  GPIOSetDir( 1, 10, 0 );
+  GPIOSetDir( 1, 11, 0 );
   /* Unlike some other pings, for ADC test, all the pins need
   to set to analog mode. Bit 7 needs to be cleared according
   to design team. */
-//#ifdef __JTAG_DISABLED
-  LPC_IOCON->JTAG_TDI_PIO0_11 &= ~0x8F; /*  ADC I/O config */
-  LPC_IOCON->JTAG_TDI_PIO0_11 |= 0x02;  /* ADC IN0 */
-  LPC_IOCON->JTAG_TMS_PIO1_0  &= ~0x8F;
-  LPC_IOCON->JTAG_TMS_PIO1_0  |= 0x02;  /* ADC IN1 */
-  LPC_IOCON->JTAG_TDO_PIO1_1  &= ~0x8F;
-  LPC_IOCON->JTAG_TDO_PIO1_1  |= 0x02;  /* ADC IN2 */
-  LPC_IOCON->JTAG_nTRST_PIO1_2 &= ~0x8F;
-  LPC_IOCON->JTAG_nTRST_PIO1_2 |= 0x02; /* ADC IN3 */
-  LPC_IOCON->SWDIO_PIO1_3 &= ~0x8F; //Nollställer
-  LPC_IOCON->SWDIO_PIO1_3 |= 0x02; /* ADC IN4 */
+#ifdef __JTAG_DISABLED
+  //LPC_IOCON->JTAG_TDI_PIO0_11 &= ~0x8F; /*  ADC I/O config */
+  //LPC_IOCON->JTAG_TDI_PIO0_11 |= 0x02;  /* ADC IN0 */
+  //LPC_IOCON->JTAG_TMS_PIO1_0  &= ~0x8F;
+  //LPC_IOCON->JTAG_TMS_PIO1_0  |= 0x02;  /* ADC IN1 */
+  //LPC_IOCON->JTAG_TDO_PIO1_1  &= ~0x8F;
+  //LPC_IOCON->JTAG_TDO_PIO1_1  |= 0x02;  /* ADC IN2 */
+  //LPC_IOCON->JTAG_nTRST_PIO1_2 &= ~0x8F;
+  //LPC_IOCON->JTAG_nTRST_PIO1_2 |= 0x02; /* ADC IN3 */
+#ifdef __SWD_DISABLED
+  //LPC_IOCON->ARM_SWDIO_PIO1_3   &= ~0x8F;
+  //LPC_IOCON->ARM_SWDIO_PIO1_3   |= 0x02;  /* ADC IN4 */
+#endif
+#endif
   LPC_IOCON->PIO1_4 &= ~0x8F; //Nollställer
   LPC_IOCON->PIO1_4 |= 0x01; /* ADC IN5 */
   LPC_IOCON->PIO1_10 &= ~0x8F; //Nollställer
   LPC_IOCON->PIO1_10 |= 0x01; /* ADC IN6 */
   LPC_IOCON->PIO1_11 &= ~0x8F; //Nollställer
   LPC_IOCON->PIO1_11 |= 0x01; /* ADC IN7 */
-//#ifdef __SWD_DISABLED
-  //LPC_IOCON->ARM_SWDIO_PIO1_3   &= ~0x8F;
-  //LPC_IOCON->ARM_SWDIO_PIO1_3   |= 0x02;  /* ADC IN4 */
-//#endif
-//#endif
-  LPC_IOCON->JTAG_TDI_PIO0_11   = 0x02;	// Select AD0 pin function
-  LPC_IOCON->JTAG_TMS_PIO1_0    = 0x02;	// Select AD1 pin function
-  LPC_IOCON->JTAG_TDO_PIO1_1    = 0x02;	// Select AD2 pin function
-  LPC_IOCON->JTAG_nTRST_PIO1_2    = 0x02;	// Select AD3 pin function
+  //LPC_IOCON->JTAG_TDI_PIO0_11   = 0x02;	// Select AD0 pin function
+  //LPC_IOCON->JTAG_TMS_PIO1_0    = 0x02;	// Select AD1 pin function
+  //LPC_IOCON->JTAG_TDO_PIO1_1    = 0x02;	// Select AD2 pin function
+  //LPC_IOCON->JTAG_nTRST_PIO1_2    = 0x02;	// Select AD3 pin function
 //  LPC_IOCON->ARM_SWDIO_PIO1_3    = 0x02;	// Select AD4 pin function
-  LPC_IOCON->PIO1_4    = 0x01;	// Select AD5 pin function
-  LPC_IOCON->PIO1_10   = 0x01;	// Select AD6 pin function
-  LPC_IOCON->PIO1_11   = 0x01;	// Select AD7 pin function
+  //LPC_IOCON->PIO1_4    = 0x02;	// Select AD5 pin function
+
+  //LPC_IOCON->PIO1_10   = 0x01;	// Select AD6 pin function
+  //LPC_IOCON->PIO1_11   = 0x01;	// Select AD7 pin function
 
   LPC_ADC->CR = ((SystemCoreClock/LPC_SYSCON->SYSAHBCLKDIV)/ADC_Clk-1)<<8;
 

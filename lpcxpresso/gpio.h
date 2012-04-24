@@ -43,6 +43,13 @@ static __INLINE void GPIOSetValue( uint32_t portNum, uint32_t bitPosi, uint32_t 
 	LPC_GPIO[portNum]->MASKED_ACCESS[(1<<bitPosi)] = (bitVal<<bitPosi);
 }
 
+static __INLINE uint32_t GPIOReadValue( uint32_t portNum, uint32_t bitPosi)
+{
+    uint32_t val;
+    val = LPC_GPIO[portNum]->MASKED_ACCESS[(1<<bitPosi)];
+    return (val >> bitPosi);
+}
+
 /*****************************************************************************
 ** Function name:		GPIOSetDir
 **

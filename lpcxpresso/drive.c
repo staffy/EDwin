@@ -4,16 +4,16 @@
  *  Created on: 13 mar 2012
  *      Author: Rickard
  */
-//PWM 1.6 1.7
+//PWM 1.6 (RXD), 1.7 (TXD)
 #include "drive.h"
 
 /*
- * Initializes timer16B1 as PWM
+ * Initializes timer32B0 as PWM
  */
 void initDrive(void)
 {
-	TimerCount = (1/TargetFrequency)/(1/(ProcessorClockFrequency/prescaler)) - 1;
-
+	//TimerCount = (1/TargetFrequency)/(prescaler/ProcessorClockFrequency) - 1;
+	TimerCount = 2399;
 	LPC_GPIO0->DIR |= (1 << 6);				// Port0 bit6 OUTPUT, Left_dir_pin
 	LPC_GPIO0->DIR |= (1 << 10);			// Port0 bit10 OUTPUT, Left_enable
 	LPC_GPIO1->DIR |= (1 << 5);        		// Port1 bit5 OUTPUT, Right_dir_pin
@@ -28,7 +28,7 @@ void initDrive(void)
 	LPC_IOCON->PIO1_7 &= ~0x1F;     	// - remove bits 0,1 & 2 and pull resistors
 	LPC_IOCON->PIO1_7 |= 0x02;        	/* CT32B0_MAT1 */
 	LPC_TMR32B0->MCR |= (1 << 10);			// Reset TC counter when it reaches Match Register 3 value
-	//LPC_TMR16B1->PR = 72;					// Prescale 347
+	LPC_TMR32B0->PR = 0;					// Prescale 347
 	LPC_TMR32B0->MR0 = TimerCount;          // TMR32B0 Match register 0
 	LPC_TMR32B0->MR1 = TimerCount;          // TMR32B0 Match register 1
 	LPC_TMR32B0->MR3 = TimerCount;//4096;            	// Cycle length 4096 (= 50.6574Hz) - Match register 3

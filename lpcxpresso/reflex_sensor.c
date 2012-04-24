@@ -7,15 +7,15 @@
 
 uint16_t reflexRead()
 {
-	uint32_t i;
-	for ( i = 0; i < REFLEX_NUM; i++ )
-	{
-		reflexValue[i] = ADCRead( 1 );
-		if( reflexValue[i] >= 100 )
+	uint32_t i = 0;
+	//for ( i = 0; i < REFLEX_NUM; i++ )
+	//{
+		reflexValue[i] = ADCRead( 5 );
+		if( reflexValue[i] >= 500 )
 		{
 			return 1;
 		}
-	}
+	//}
 	return 0;
 }
 

@@ -19,7 +19,8 @@
 #ifndef __ADC_H
 #define __ADC_H
 
-#define ADC_INTERRUPT_FLAG	1	/* 1 is interrupt driven, 0 is polling */
+#include "gpio.h"
+#define ADC_INTERRUPT_FLAG	0	/* 1 is interrupt driven, 0 is polling */
 #define BURST_MODE			0   /* Burst mode works in interrupt driven mode only. */
 #define ADC_DEBUG			1
 
