@@ -135,10 +135,10 @@ void ADCInit( uint32_t ADC_Clk )
 
   /* Enable AHB clock to the ADC. */
   LPC_SYSCON->SYSAHBCLKCTRL |= (1<<13);
-  GPIOSetDir( 1, 3, 0 ); //AD4 output
-  GPIOSetDir( 1, 4, 0 );
-  GPIOSetDir( 1, 10, 0 );
-  GPIOSetDir( 1, 11, 0 );
+  GPIOSetDir( 1, 3, 0 ); //AD4 input
+  GPIOSetDir( 1, 4, 0 ); //AD5 input
+  GPIOSetDir( 1, 10, 0 );//AD6 input
+  GPIOSetDir( 1, 11, 0 );//AD7 input
   /* Unlike some other pings, for ADC test, all the pins need
   to set to analog mode. Bit 7 needs to be cleared according
   to design team. */

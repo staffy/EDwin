@@ -17,6 +17,7 @@
 #include "adc.h"
 #include "drive.h"
 #include "reflex_sensor.h"
+#include "sharp_sensor.h"
 #include "gpio.h"
 
 
@@ -43,7 +44,7 @@ int main(void) {
 	//GPIOSetDir( 3, 2, 1 );
 	//GPIOSetValue( 3, 2, 0);
 	GPIOSetDir( LED_PORT, LED_BIT, 1 );
-	GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
+	GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
 	GPIOSetDir( 3, 2, 1 );
 	// Enter an infinite loop, just incrementing a counter
 	volatile static int i = 0 ;
@@ -52,11 +53,11 @@ int main(void) {
 		//uint16_t adcValue = ADCRead( 5 );
 		if(reflexRead())//adcValue > 100)
 		{
-			GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
+			GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
 		}
 		else
 		{
-			GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
+			GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
 		}
 		//i++;
 	}

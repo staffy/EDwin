@@ -9,10 +9,10 @@
 #define REFLEX_SENSOR_H_
 /*
  * Sensorer på pin:
- * P0.11
- * P1.0
- * P1.1
- * P1.2
+ * P0.11	AD0
+ * P1.0		AD1
+ * P1.1		AD2
+ * P1.2		AD3
  */
 // Includes
 #ifdef __USE_CMSIS
@@ -27,7 +27,6 @@
 // Global variables
 volatile uint32_t reflexValue[REFLEX_NUM];
 // Functions
-void initReflex(void);
 uint16_t reflexRead();
 //void PIOINT2_IRQHandler(void);
 //void PIOINT3_IRQHandler(void);
