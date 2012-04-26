@@ -8,7 +8,6 @@
 
 #include "LCD.h"
 
-
 /*
  * Delay for a few ms. Requires SysTick timer to be activated and a global
  * variable msTicks to be defined
@@ -47,9 +46,9 @@ void _delay_us( uint32_t u_secs )
 void _LCD_pulse( void )
 {
 	_delay_us( 1 );
-	LCDPORT_CTRL->DATA |= (1 << ENABLE);
+	LCDPORT_CTRL_E->DATA |= (1 << ENABLE);
 	_delay_us( 1 );
-	LCDPORT_CTRL->DATA ^= (1 << ENABLE);
+	LCDPORT_CTRL_E->DATA ^= (1 << ENABLE);
 }
 
 /*
@@ -82,7 +81,7 @@ void _LCD_sendData( const unsigned char data )
 void LCD_sendCmd( unsigned char cmd )
 {
 	// Clear RS
-	LCDPORT_CTRL->DATA &= ~( 1 << RS );
+	LCDPORT_CTRL_RS->DATA &= ~( 1 << RS );
 	_LCD_sendData( cmd );
 }
 
@@ -92,7 +91,7 @@ void LCD_sendCmd( unsigned char cmd )
 void LCD_sendChar( unsigned char character )
 {
 	// Set RS
-	LCDPORT_CTRL->DATA |= ( 1 << RS );
+	LCDPORT_CTRL_RS->DATA |= ( 1 << RS );
 	_LCD_sendData( character );
 }
 
@@ -146,7 +145,8 @@ void LCD_init( void )
 
 	// Set pins as outputs
 	LCDPORT->DIR |= (~LCD_MASK & 0xFFF);
-	LCDPORT_CTRL->DIR |= ( (1<<ENABLE) | (1<<RS) );
+	LCDPORT_CTRL_RS->DIR |= (1<<RS);
+	LCDPORT_CTRL_E->DIR |= (1<<ENABLE);
 
 	// Initial delay
 	_delay_ms( 15 );
@@ -156,7 +156,7 @@ void LCD_init( void )
 	for (i = 0; i < 3; i++ )
 	{
 		LCDPORT->DATA &= LCD_MASK ; //Set used pins to zero
-		LCDPORT_CTRL->DATA &= ~(1<<RS);
+		LCDPORT_CTRL_RS->DATA &= ~(1<<RS);
 
 		LCDPORT->DATA |= 0x03 << LCD_OFFSET;	//And set up the command
 		_LCD_pulse();
@@ -185,4 +185,10 @@ void LCD_init( void )
 	LCD_sendCmd( 0x0C );
 	LCD_home();
 }
+
+void SysTick_Handler(void)
+{
+	msTicks++;
+}
+
 

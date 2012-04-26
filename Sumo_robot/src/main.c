@@ -19,6 +19,8 @@
 #include "reflex_sensor.h"
 #include "sharp_sensor.h"
 #include "gpio.h"
+#include "LCD.h"
+
 
 
 // Variable to store CRP value in. Will be placed automatically
@@ -34,12 +36,14 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 #define LED_ON 1		// Level to set port to turn on led
 #define LED_OFF 0		// Level to set port to turn off led
 
+
 int main(void) {
 	//GPIOInit();
 	SysTick_Config( SystemCoreClock/1000 );
-	SysTick->CTRL &= (0 << 1);
+	//SysTick->CTRL &= (0 << 1); 	// Need to be commected for lcd
 	initDrive();
 	ADCInit( ADC_CLK );
+	//LCD_init();
 	//initReflex();
 	//GPIOSetDir( 3, 2, 1 );
 	//GPIOSetValue( 3, 2, 0);
@@ -47,9 +51,12 @@ int main(void) {
 	GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
 	GPIOSetDir( 3, 2, 1 );
 	// Enter an infinite loop, just incrementing a counter
-	volatile static int i = 0 ;
+	//LCD_home();
+	//LCD_clear();
+	//LCD_sendStr("Init done!");
 	while(1)
 	{
+		GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
 		//uint16_t adcValue = ADCRead( 5 );
 		if(reflexRead())//adcValue > 100)
 		{
@@ -59,7 +66,6 @@ int main(void) {
 		{
 			GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
 		}
-		//i++;
 	}
 	return 0 ;
 }

@@ -1,5 +1,5 @@
 /*
- * LCD_lib.h
+ * LCD.h
  *
  *  	Created on: 15 okt 2010
  *      Authors: Staffan Sjöqvist, Niklas Norin
@@ -25,13 +25,12 @@
  *
  */
 
-
-
 #ifndef LCD_H_
 #define LCD_H_
 
 #include "LPC13xx.h"
-#include "variables.h"
+
+//#include "variables.h"
 
 //#define LABPLATTAN
 
@@ -54,16 +53,18 @@
 // MODERKORTET
 // Ports used for control and data transfer the LCD, pin 0-3 used for data
 #define LCDPORT 		LPC_GPIO2		// Data port
-#define LCDPORT_CTRL 	LPC_GPIO0	// Control signals
+#define LCDPORT_CTRL_RS LPC_GPIO0	// Control signals
+#define LCDPORT_CTRL_E 	LPC_GPIO1	// Control signals
 
 // Port pins
-#define RS 		1	// Pin used for Register Select
-#define ENABLE 	3	// Pin used for Enable pin
+#define RS 		4	// Pin used for Register Select	0_4
+#define ENABLE 	9	// Pin used for Enable pin 		1_9
 
 // Offset used for adjusting which bits are used, for example LCD_OFFSET = 4 uses pins 4:7 for data.
-#define LCD_OFFSET 3
+#define LCD_OFFSET 5
 
 #endif
+
 // */
 
 
@@ -73,7 +74,7 @@
 // Creates a bit mask used to not modify bits not used by LCD.
 #define LCD_MASK ( ((0xFF0 << LCD_OFFSET) | (0xFFF >> (12-LCD_OFFSET))) & 0xFFF )
 
-
+uint32_t msTicks; 	// Global variable used by LCD
 // External function prototypes
 
 void LCD_init( void );
@@ -89,6 +90,8 @@ void _LCD_pulse( void );
 void _LCD_sendData( unsigned char data );
 void _delay_ms(uint32_t time);
 void _delay_us( uint32_t u_secs );
+void SysTick_Handler(void);
+
 
 #endif /* LCD_H_ */
 
