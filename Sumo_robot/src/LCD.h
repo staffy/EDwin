@@ -30,26 +30,6 @@
 
 #include "LPC13xx.h"
 
-//#include "variables.h"
-
-//#define LABPLATTAN
-
-#ifdef LABPLATTAN
-// LABPLATTAN
-// Ports used for control and data transfer the LCD, pin 0-3 used for data
-#define LCDPORT 		LPC_GPIO2		// Data port
-#define LCDPORT_CTRL 	LPC_GPIO2	// Control signals
-
-// Port pins
-#define RS 		0	// Pin used for Register Select
-#define ENABLE 	1	// Pin used for Enable pin
-
-// Offset used for adjusting which bits are used, for example LCD_OFFSET = 4 uses pins 4:7 for data.
-#define LCD_OFFSET 6
-
-#endif
-
-#ifndef LABPLATTAN
 // MODERKORTET
 // Ports used for control and data transfer the LCD, pin 0-3 used for data
 #define LCDPORT 		LPC_GPIO2		// Data port
@@ -61,14 +41,7 @@
 #define ENABLE 	9	// Pin used for Enable pin 		1_9
 
 // Offset used for adjusting which bits are used, for example LCD_OFFSET = 4 uses pins 4:7 for data.
-#define LCD_OFFSET 5
-
-#endif
-
-// */
-
-
-
+#define LCD_OFFSET 4
 
 
 // Creates a bit mask used to not modify bits not used by LCD.

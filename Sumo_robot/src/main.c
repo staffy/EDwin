@@ -48,11 +48,12 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 int main(void)
 {
 	GPIOInit();
-	//SysTick_Config( SystemCoreClock/1000 );
+	SysTick_Config( SystemCoreClock/1000 );
 	//SysTick->CTRL &= (0 << 1); 	// Need to be commected for lcd
 	initDrive();
 	//ADCInit( ADC_CLK );
-	//LCD_init();
+
+	LCD_init();
 	//initReflex();
 	//GPIOSetDir( 3, 2, 1 );
 	//GPIOSetValue( 3, 2, 0);
@@ -62,9 +63,9 @@ int main(void)
 	GPIOSetDir( START_PORT, START_BIT, 0);
 	GPIOSetDir( KILL_SWITCH_PORT, KILL_SWITCH_BIT, 0);
 	// Enter an infinite loop, just incrementing a counter
-	//LCD_home();
-	//LCD_clear();
-	//LCD_sendStr("Init done!");
+	LCD_home();
+	LCD_clear();
+	LCD_sendStr("Init done!");
 
 	init_timer32(0, TIME_INTERVAL);
 	enable_timer32(0);
