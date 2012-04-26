@@ -24,6 +24,24 @@
 // User defines
 #define REFLEX_NUM 4
 
+/* FRONT
+ * 0---1
+ * |   |
+ * |   |
+ * |   |
+ * 2---3
+ *  BACK
+ */
+
+#define REFLEX_1_PORT 0
+#define REFLEX_2_PORT 1
+#define REFLEX_3_PORT 1
+#define REFLEX_4_PORT 1
+#define REFLEX_1_BIT 11
+#define REFLEX_2_BIT 0
+#define REFLEX_3_BIT 1
+#define REFLEX_4_BIT 2
+
 // Global variables
 volatile uint32_t reflexValue[REFLEX_NUM];
 // Functions
