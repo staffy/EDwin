@@ -168,9 +168,11 @@ void ADCInit( uint32_t ADC_Clk )
   //LPC_IOCON->JTAG_nTRST_PIO1_2    = 0x02;	// Select AD3 pin function
 //  LPC_IOCON->ARM_SWDIO_PIO1_3    = 0x02;	// Select AD4 pin function
   //LPC_IOCON->PIO1_4    = 0x02;	// Select AD5 pin function
-
   //LPC_IOCON->PIO1_10   = 0x01;	// Select AD6 pin function
   //LPC_IOCON->PIO1_11   = 0x01;	// Select AD7 pin function
+  LPC_IOCON->PIO1_4   = (1<<6)|(1<<0);      //select AD5
+  LPC_IOCON->PIO1_10  = (1<<6)|(1<<0);      //select AD6
+  LPC_IOCON->PIO1_11  = (1<<6)|(1<<0);      //select AD7
 
   LPC_ADC->CR = ((SystemCoreClock/LPC_SYSCON->SYSAHBCLKDIV)/ADC_Clk-1)<<8;
 

@@ -8,14 +8,19 @@
 
 uint16_t sharpRead()
 {
-	uint32_t i = 4;
-	uint32_t sharpValue[4];
-	for ( i = 4; i < 8; i++ )
+	uint32_t i = 0;
+	uint32_t sharpValue;
+	for ( i = 0; i < 3; i++ )
 	{
-		sharpValue[i] = ADCRead( i );
-		if( sharpValue[i] >= 500 )
+		sharpValue = ADCRead( i+5 );
+
+		if( sharpValue >= 500 )
 		{
-			return i;
+			return i+5;
+		}
+		else
+		{
+
 		}
 	}
 	return 0;
