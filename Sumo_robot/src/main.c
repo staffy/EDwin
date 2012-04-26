@@ -74,6 +74,76 @@ int main(void) {
 			{
 				GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
 			}
+
+
+
+			//---MAIN---//
+//Start signal: 0, Kill switch: 1, LED: off -> POWER ON
+			while(!GPIOReadValue(START_PORT, START_BIT) && GPIOReadValue(KILL_SWITCH_PORT, KILL_SWITCH_BIT))//while not start signal and kill switch signal
+			{
+				//LED = släckt
+				GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
+				//do nothing
+			}
+
+
+//Start signal: 1, Kill switch: 1, LED: on -> STARTED
+			//enable_engines();//gör nåt annat smart!
+			while(GPIOReadValue(START_PORT, START_BIT) && GPIOReadValue(KILL_SWITCH_PORT, KILL_SWITCH_BIT))//while not stop
+			{
+				//LED = TÄND
+				GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
+		/*		switch(reflexRead())
+				{
+					case 0:
+						set_movement(1, 60);//backwards
+						break;
+					case 1:
+						set_movement(1, 60);//backwards
+						break;
+					case 2:
+						set_movement(0, 60);//forward
+						break;
+					case 3:
+						set_movement(0, 60);//forward
+						break;
+					case 4:
+						set_movement(2, 60);//turn right
+						//if object found in front
+						if(1)//if(sharpRead() == 4 || sharpRead == 5)
+						{
+							set_movement(0, 60);//forward
+						}
+						//if object found behind
+						if(2)//if(sharpRead() == 1 || sharpRead() == 2)
+						{
+							set_movement(1, 60);//backwards
+						}
+						break;
+					default:
+						break;
+					}*/
+			}
+//Start signal: 0, Kill switch: 0, LED: flashing -> STOPPED
+			while(!GPIOReadValue(START_PORT, START_BIT) && !GPIOReadValue(KILL_SWITCH_PORT, KILL_SWITCH_BIT))
+			{
+				if(reflexRead() == 0)
+				{
+					if ( (timer32_0_counter%LED_TOGGLE_TICKS) < (LED_TOGGLE_TICKS/2) )
+					{
+					  GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
+					}
+					else
+					{
+					  GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
+					}
+					/* Go to sleep to save power between timer interrupts */
+					__WFI();
+				}
+				GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
+
+				//disable_engines();
+			}
 		}
 		return 0 ;
 }
