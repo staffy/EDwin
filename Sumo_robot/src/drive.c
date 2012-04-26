@@ -19,7 +19,7 @@ void initDrive(void)
 	LPC_GPIO1->DIR |= (1 << 5);        		// Port1 bit5 OUTPUT, Right_dir_pin
 	LPC_GPIO1->DIR |= (1 << 8);				// Port1 bit8 OUTPUT, Right_Enable
 	disable_engines();
-	set_movement(2);
+	set_movement(2, 60);
 	LPC_SYSCON->SYSAHBCLKCTRL |= (1 << 9);	// Enable clock to timer 0, CT32B0
 	//LPC_IOCON->PIO1_9 |= (1 << 0);        // set bit 0 to connect pin to CT16B1_MAT0
 	//LPC_IOCON->PIO1_9 |= (1 << 1);        	// set bit 1 to connect pin 10 to CT16B1_MAT1
@@ -38,6 +38,12 @@ void initDrive(void)
 	set_speed_right(40);
 	set_speed_left(80);
 	return;
+}
+
+void set_speed(int percent)
+{
+	set_speed_left(percent);
+	set_speed_right(percent);
 }
 
 void set_speed_left(int percent)
@@ -76,21 +82,25 @@ void set_direction(int left, int right)
 	GPIOSetValue( left_dir_port, left_dir, left );
 }
 
-void set_movement(int movement)
+void set_movement(int movement, int speed)
 {
 	switch(movement)
 	{
 	case 0:		//Forward
 		set_direction(0,0);
+		set_speed(speed);
 		break;
 	case 1:		//Reverse
 		set_direction(1,1);
+		set_speed(speed);
 		break;
 	case 2:		//Turn Right
 		set_direction(0,1);
+		set_speed(speed);
 		break;
 	case 3:		//Turn Left
 		set_direction(1,0);
+		set_speed(speed);
 		break;
 	default:
 		break;

@@ -33,10 +33,11 @@ volatile uint16_t TimerCount;
 
 // Functions
 void initDrive(void);
+void set_speed(int percent);
 void set_speed_left(int percent);
 void set_speed_right(int percent);
 void set_direction(int left, int right);
-void set_movement(int movement);
+void set_movement(int movement, int speed);
 void enable_engines(void);
 void disable_engines(void);
 
