@@ -14,12 +14,14 @@
 
 #include <cr_section_macros.h>
 #include <NXP/crp.h>
+#include <stdlib.h>
 #include "adc.h"
 #include "drive.h"
 #include "reflex_sensor.h"
 #include "sharp_sensor.h"
 #include "gpio.h"
 #include "LCD.h"
+
 
 
 //just for blinky
@@ -49,10 +51,9 @@ int main(void)
 {
 	GPIOInit();
 	SysTick_Config( SystemCoreClock/1000 );
-	//SysTick->CTRL &= (0 << 1); 	// Need to be commected for lcd
+	//SysTick->CTRL &= (0 << 1); 	// Need to be commented for lcd
 	initDrive();
-	//ADCInit( ADC_CLK );
-
+	ADCInit( ADC_CLK );
 	LCD_init();
 	//initReflex();
 	//GPIOSetDir( 3, 2, 1 );
@@ -67,22 +68,57 @@ int main(void)
 	LCD_clear();
 	LCD_sendStr("Init done!");
 
-	init_timer32(0, TIME_INTERVAL);
-	enable_timer32(0);
+	init_timer32(1, TIME_INTERVAL);
+	enable_timer32(1);
+
+
+
+	/********************************************
+	// Test av sharpsensorer
+	char buf[5];
+	while(1)
+	{
+		uint32_t i = sharpRead();
+		if(i)//adcValue > 100)
+		{
+			LCD_home();
+			LCD_clear();
+			itoa(i, buf, 10);
+			LCD_sendStr(buf);
+			//LCD_sendStr("High!");
+			_delay_ms(100);
+			GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
+		}
+		else
+		{
+			LCD_home();
+			LCD_clear();
+			LCD_sendStr("Low!");
+			_delay_ms(100);
+			GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
+		}
+	}
+	************************************************/
+
+	/*************'
+	 * Test av drive
+	 */
+	while(1)
+	{
+	 set_movement(0, 50);//backwards
+	 _delay_ms(2000);
+	 set_movement(1, 100);
+	 _delay_ms(2000);
+	 set_movement(2, 60);
+	 _delay_ms(2000);
+	 set_movement(3, 50);
+	 _delay_ms(2000);
+	}
+
+
 
 	while(1)
 	{
-			//GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
-			//uint16_t adcValue = ADCRead( 5 );
-			/*if(reflexRead())//adcValue > 100)
-			{
-				GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
-			}
-			else
-			{
-				GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
-			}*/
-
 
 		//-----MAIN-----//
 //Start signal: 0, Kill switch: 1, LED: off -> POWER ON
@@ -135,16 +171,16 @@ int main(void)
 //Start signal: 0, Kill switch: 0, LED: flashing -> STOPPED
 		while(!GPIOReadValue(START_PORT, START_BIT) && !GPIOReadValue(KILL_SWITCH_PORT, KILL_SWITCH_BIT))
 		{
-				if ( (timer32_0_counter%LED_TOGGLE_TICKS) < (LED_TOGGLE_TICKS/2) )
+				/*if ( (timer32_1_counter%LED_TOGGLE_TICKS) < (LED_TOGGLE_TICKS/2) )
 				{
 					GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
 				}
 				else
 				{
 	  			  GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
-				}
+				}*/
 				/* Go to sleep to save power between timer interrupts */
-				__WFI();
+
 
 				//disable_engines();
 		}

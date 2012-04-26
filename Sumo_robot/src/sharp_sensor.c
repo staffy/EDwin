@@ -14,9 +14,9 @@ uint16_t sharpRead()
 	{
 		sharpValue = ADCRead( i+5 );
 
-		if( sharpValue >= 500 )
+		if( sharpValue >= 50 )
 		{
-			return i+5;
+			return sharpValue; //i+5
 		}
 		else
 		{
@@ -30,7 +30,7 @@ uint32_t sharpReadChannel(uint8_t channel)
 {
 	uint32_t sharpValue;
 	sharpValue = ADCRead( channel );
-	if( sharpValue >= 500 )
+	if( sharpValue >= 200 )
 	{
 		return sharpValue;
 	}
