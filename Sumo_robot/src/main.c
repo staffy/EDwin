@@ -46,16 +46,17 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 #define KILL_SWITCH_PORT 0	// Port for kill_switch
 #define KILL_SWITCH_BIT 3	// Pin on port for kill_switch
 
+int temp = 0;
 
 int main(void)
 {
 	GPIOInit();
 	SysTick_Config( SystemCoreClock/1000 );
-	//SysTick->CTRL &= (0 << 1); 	// Need to be commented for lcd
+	SysTick->CTRL &= (0 << 1); 	// Need to be commented for lcd
 	initDrive();
 	ADCInit( ADC_CLK );
-	LCD_init();
-	//initReflex();
+	//LCD_init();
+	reflexInit();
 	//GPIOSetDir( 3, 2, 1 );
 	//GPIOSetValue( 3, 2, 0);
 	GPIOSetDir( LED_PORT, LED_BIT, 1 );
@@ -64,13 +65,12 @@ int main(void)
 	GPIOSetDir( START_PORT, START_BIT, 0);
 	GPIOSetDir( KILL_SWITCH_PORT, KILL_SWITCH_BIT, 0);
 	// Enter an infinite loop, just incrementing a counter
-	LCD_home();
-	LCD_clear();
-	LCD_sendStr("Init done!");
+	//LCD_home();
+	//LCD_clear();
+	//LCD_sendStr("Init done!");
 
-	init_timer32(1, TIME_INTERVAL);
-	enable_timer32(1);
-
+	//init_timer32(1, TIME_INTERVAL);
+	//enable_timer32(1);
 
 
 	/********************************************
@@ -103,7 +103,7 @@ int main(void)
 	/*************'
 	 * Test av drive
 	 */
-	while(1)
+/*	while(1)
 	{
 	 set_movement(0, 50);//backwards
 	 _delay_ms(2000);
@@ -113,30 +113,28 @@ int main(void)
 	 _delay_ms(2000);
 	 set_movement(3, 50);
 	 _delay_ms(2000);
-	}
+	}*/
 
 
 
 	while(1)
 	{
-
 		//-----MAIN-----//
 //Start signal: 0, Kill switch: 1, LED: off -> POWER ON
 		while(!GPIOReadValue(START_PORT, START_BIT) && GPIOReadValue(KILL_SWITCH_PORT, KILL_SWITCH_BIT))//while not start signal and kill switch signal
 		{
 			//LED = släckt
 			GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
+			set_movement(0,0);//enable engines
 			//do nothing
 		}
 
 
 //Start signal: 1, Kill switch: 1, LED: on -> STARTED
-			//enable_engines();//gör nåt annat smart!
 		while(GPIOReadValue(START_PORT, START_BIT) && GPIOReadValue(KILL_SWITCH_PORT, KILL_SWITCH_BIT))//while not stop
 		{
-			//LED = TÄND
-			GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
-	/*		switch(reflexRead())
+			//only done for the first time
+			switch(reflexRead())
 			{
 				case 0:
 					set_movement(1, 60);//backwards
@@ -151,38 +149,27 @@ int main(void)
 					set_movement(0, 60);//forward
 					break;
 				case 4:
-					set_movement(2, 60);//turn right
+					set_movement(3, 60);//turn left
 					//if object found in front
-					if(1)//if(sharpRead() == 4 || sharpRead == 5)
+					/*if(sharpRead() == 5 || sharpRead() == 6)
 					{
 						set_movement(0, 60);//forward
 					}
 					//if object found behind
-					if(2)//if(sharpRead() == 1 || sharpRead() == 2)
+					if(sharpRead() == 7)
 					{
 						set_movement(1, 60);//backwards
-					}
+					}*/
 					break;
 				default:
 					break;
-				}*/
+				}
 		}
 
 //Start signal: 0, Kill switch: 0, LED: flashing -> STOPPED
 		while(!GPIOReadValue(START_PORT, START_BIT) && !GPIOReadValue(KILL_SWITCH_PORT, KILL_SWITCH_BIT))
 		{
-				/*if ( (timer32_1_counter%LED_TOGGLE_TICKS) < (LED_TOGGLE_TICKS/2) )
-				{
-					GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
-				}
-				else
-				{
-	  			  GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
-				}*/
-				/* Go to sleep to save power between timer interrupts */
-
-
-				//disable_engines();
+			set_movement(0,0);//disable engines
 		}
 	}
 	return 0 ;
