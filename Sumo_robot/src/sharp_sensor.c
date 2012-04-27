@@ -6,7 +6,7 @@
  */
 #include "sharp_sensor.h"
 
-uint16_t sharpRead()
+uint32_t sharpRead()
 {
 	uint32_t i = 0;
 	uint32_t sharpValue;
@@ -14,9 +14,9 @@ uint16_t sharpRead()
 	{
 		sharpValue = ADCRead( i+5 );
 
-		if( sharpValue >= 50 )
+		if( sharpValue >= 230 )
 		{
-			return sharpValue; //i+5
+			return i+5; //i+5
 		}
 		else
 		{

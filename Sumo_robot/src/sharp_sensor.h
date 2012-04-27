@@ -27,6 +27,6 @@
 // Global variables
 
 // Functions
-uint16_t sharpRead();
+uint32_t sharpRead();
 uint32_t sharpReadChannel(uint8_t channel);
 #endif /* SHARP_SENSOR_H_ */

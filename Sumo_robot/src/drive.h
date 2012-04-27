@@ -18,7 +18,7 @@
 #define left_dir_port 0
 #define left_dir 6
 #define left_enable 10
-#define right_dir_port 0
+#define right_dir_port 1
 #define right_dir 5
 #define right_enable 8
 //#define TargetFrequency 30000

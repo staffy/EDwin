@@ -45,8 +45,11 @@
 // Global variables
 volatile uint32_t reflexValue[REFLEX_NUM];
 // Functions
-void reflexInit();
-uint16_t reflexRead();
+void reflexAnalogInit();
+uint32_t reflexReadAnalog();
+void reflexDigitalInit();
+uint32_t reflexReadDigital();
+
 //void PIOINT2_IRQHandler(void);
 //void PIOINT3_IRQHandler(void);
 
