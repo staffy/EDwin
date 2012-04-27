@@ -18,26 +18,32 @@ void reflexAnalogInit()
 	GPIOSetDir( REFLEX_2_PORT, REFLEX_2_BIT, 0 );
 	GPIOSetDir( REFLEX_3_PORT, REFLEX_3_BIT, 0 );
 	GPIOSetDir( REFLEX_4_PORT, REFLEX_4_BIT, 0 );
-	LPC_IOCON->R_PIO0_11   = (1<<6)|(1<<0);      //select AD0
-	LPC_IOCON->R_PIO1_0  = (1<<6)|(1<<0);      //select AD1
-	LPC_IOCON->R_PIO1_1  = (1<<6)|(1<<0);      //select AD2
-	LPC_IOCON->R_PIO1_2  = (1<<6)|(1<<0);      //select AD3
+	LPC_IOCON->R_PIO0_11   = (1<<6)|(1<<1);      //select AD0
+	LPC_IOCON->R_PIO1_0  = (1<<6)|(1<<1);      //select AD1
+	LPC_IOCON->R_PIO1_1  = (1<<6)|(1<<1);      //select AD2
+	LPC_IOCON->R_PIO1_2  = (1<<6)|(1<<1);      //select AD3
 }
 
 uint32_t reflexReadAnalog()
 {
 	uint32_t i = 0;
 	uint32_t reflexValue;
-	for ( i = 0; i < 3; i++ )
+	for ( i = 0; i < 4; i++ )
 	{
 		reflexValue = ADCRead( i );
 
-		if( reflexValue >= 50 )
+		//Correct, switch dir at white
+		if( reflexValue <= 850 )
 		{
-			return i+1; //i+5
+			return i; //i+5
+		}
+		//Inverterted, switch dir at black
+		if( reflexValue >= 950 )
+		{
+			return i; //i+5
 		}
 	}
-	return 0;
+	return 4;
 }
 
 void reflexDigitalInit()
