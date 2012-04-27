@@ -5,6 +5,19 @@
  */
 #include "reflex_sensor.h"
 
+void reflexInit()
+{
+	GPIOSetDir( REFLEX_1_PORT, REFLEX_1_BIT, 0 );
+	GPIOSetDir( REFLEX_2_PORT, REFLEX_2_BIT, 0 );
+	GPIOSetDir( REFLEX_3_PORT, REFLEX_3_BIT, 0 );
+	GPIOSetDir( REFLEX_4_PORT, REFLEX_4_BIT, 0 );
+
+	LPC_IOCON->R_PIO0_11 &= ~0x1F;		// - remove bits 0,1 & 2 and pull resistors
+	LPC_IOCON->R_PIO1_0 &= ~0x1F;			// - remove bits 0,1 & 2 and pull resistors
+	LPC_IOCON->R_PIO1_1 &= ~0x1F;			// - remove bits 0,1 & 2 and pull resistors
+	LPC_IOCON->R_PIO1_2 &= ~0x1F;			// - remove bits 0,1 & 2 and pull resistors
+}
+
 uint16_t reflexRead()
 {
 	if(!GPIOReadValue(REFLEX_1_PORT, REFLEX_1_BIT))
