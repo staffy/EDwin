@@ -135,14 +135,14 @@ void ADCInit( uint32_t ADC_Clk )
 
   /* Enable AHB clock to the ADC. */
   LPC_SYSCON->SYSAHBCLKCTRL |= (1<<13);
-  GPIOSetDir( 1, 3, 0 ); //AD4 input
+  //GPIOSetDir( 1, 3, 0 ); //AD4 input
   GPIOSetDir( 1, 4, 0 ); //AD5 input
   GPIOSetDir( 1, 10, 0 );//AD6 input
   GPIOSetDir( 1, 11, 0 );//AD7 input
   /* Unlike some other pings, for ADC test, all the pins need
   to set to analog mode. Bit 7 needs to be cleared according
   to design team. */
-#ifdef __JTAG_DISABLED
+//#ifdef __JTAG_DISABLED
   //LPC_IOCON->JTAG_TDI_PIO0_11 &= ~0x8F; /*  ADC I/O config */
   //LPC_IOCON->JTAG_TDI_PIO0_11 |= 0x02;  /* ADC IN0 */
   //LPC_IOCON->JTAG_TMS_PIO1_0  &= ~0x8F;
@@ -151,11 +151,11 @@ void ADCInit( uint32_t ADC_Clk )
   //LPC_IOCON->JTAG_TDO_PIO1_1  |= 0x02;  /* ADC IN2 */
   //LPC_IOCON->JTAG_nTRST_PIO1_2 &= ~0x8F;
   //LPC_IOCON->JTAG_nTRST_PIO1_2 |= 0x02; /* ADC IN3 */
-#ifdef __SWD_DISABLED
-  LPC_IOCON->ARM_SWDIO_PIO1_3   &= ~0x8F;
-  LPC_IOCON->ARM_SWDIO_PIO1_3   |= 0x02;  /* ADC IN4 */
-#endif
-#endif
+//#ifdef __SWD_DISABLED
+  //LPC_IOCON->ARM_SWDIO_PIO1_3   &= ~0x8F;
+  //LPC_IOCON->ARM_SWDIO_PIO1_3   |= 0x02;  /* ADC IN4 */
+//#endif
+//#endif
   LPC_IOCON->PIO1_4 &= ~0x8F; //Nollställer
   LPC_IOCON->PIO1_4 |= 0x01; /* ADC IN5 */
   LPC_IOCON->PIO1_10 &= ~0x8F; //Nollställer

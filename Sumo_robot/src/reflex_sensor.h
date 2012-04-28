@@ -47,6 +47,7 @@ volatile uint32_t reflexValue[REFLEX_NUM];
 // Functions
 void reflexAnalogInit();
 uint32_t reflexReadAnalog();
+uint32_t readReflexChannel(uint32_t channel);
 void reflexDigitalInit();
 uint32_t reflexReadDigital();
 

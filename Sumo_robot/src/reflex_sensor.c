@@ -24,6 +24,19 @@ void reflexAnalogInit()
 	LPC_IOCON->R_PIO1_2  = (1<<6)|(1<<1);      //select AD3
 }
 
+uint32_t readReflexChannel(uint32_t channel)
+{
+	uint32_t reflexValue;
+	reflexValue = ADCRead( channel );
+
+	//Correct, switch dir at white
+	if( reflexValue <= 850 )
+	{
+		return 1; //i+5
+	}
+	return 0;
+}
+
 uint32_t reflexReadAnalog()
 {
 	uint32_t i = 0;
@@ -38,10 +51,10 @@ uint32_t reflexReadAnalog()
 			return i; //i+5
 		}
 		//Inverterted, switch dir at black
-		if( reflexValue >= 950 )
+		/*if( reflexValue >= 950 )
 		{
 			return i; //i+5
-		}
+		}*/
 	}
 	return 4;
 }

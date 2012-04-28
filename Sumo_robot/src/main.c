@@ -50,7 +50,7 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 #define SPEED_2 60
 #define SPEED_3 80
 #define SPEED_4 100
-#define SPEED SPEED_0
+#define SPEED SPEED_4
 
 int main(void)
 {
@@ -60,157 +60,21 @@ int main(void)
 	initDrive();
 	ADCInit( ADC_CLK );
 	reflexAnalogInit();
+	//sharpInit();
 	//reflexDigitalInit();
 	//LCD_init();
 	//initReflex();
-	//GPIOSetDir( 3, 2, 1 );
-	//GPIOSetValue( 3, 2, 0);
 	GPIOSetDir( LED_PORT, LED_BIT, 1 );
 	GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
 	//GPIOSetDir( 3, 2, 1 );
 	GPIOSetDir( START_PORT, START_BIT, 0);
 	GPIOSetDir( KILL_SWITCH_PORT, KILL_SWITCH_BIT, 0);
-	// Enter an infinite loop, just incrementing a counter
-	//LCD_home();
-	//LCD_clear();
-	//LCD_sendStr("Init done!");
-
-	//init_timer32(1, TIME_INTERVAL);
-	//enable_timer32(1);
-	set_movement(0, SPEED);
-	while(1)
-	{
-		switch(reflexReadAnalog())
-		{
-		case 0:
-			set_movement(1, SPEED);//backwards
-			break;
-		case 1:
-			set_movement(1, SPEED);//backwards
-			break;
-		case 2:
-			set_movement(0, SPEED);//forward
-			break;
-		case 3:
-			set_movement(0, SPEED);//forward
-			break;
-		default:
-			break;
-		}
-	}
-	/*******************************'
-	 * Test av analog reflexsensorkod
-	 */
-	/*
-	while(1)
-	{
-		switch(reflexReadAnalog())
-		{
-		case 0:
-			GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
-			break;
-		case 1:
-			GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
-			break;
-		case 2:
-			GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
-			break;
-		case 3:
-			GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
-			break;
-		case 4:
-			GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
-			break;
-		default:
-			break;
-		}
-	}
-	*******************************************/
-	/********************************************
-	// Test av sharpsensorer
-
-	uint32_t i;
-	while(1)
-	{
-		if(reflexAnalogRead())
-		{
-			GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
-		}
-		else
-		{
-			GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
-		}
-
-		i = reflexReadDigital();
-		if(i == 4)//adcValue > 100)
-		{
-			LCD_home();
-			LCD_clear();
-			itoa(i, buf, 10);
-			LCD_sendStr(buf);
-			//LCD_sendStr("High!");
-			_delay_ms(100);
-			GPIOSetValue( LED_PORT, LED_BIT, LED_ON );
-		}
-		else
-		{
-			LCD_home();
-			LCD_clear();
-			LCD_sendStr("Low!");
-			_delay_ms(100);
-			GPIOSetValue( LED_PORT, LED_BIT, LED_OFF );
-		}
-	}
-	************************************************/
-
-	/*************'
-	 * Test av drive
-
-	while(1)
-	{
-		switch(reflexReadAnalog())
-		{
-		case 0:
-			//set_movement(3,0);
-			//_delay_ms(100);
-			set_movement(2, 50);//backwards
-			break;
-		case 1:
-			//set_movement(3,0);
-			//_delay_ms(100);
-			set_movement(2, 50);//backwards
-			break;
-		case 2:
-			//set_movement(3,0);
-			//_delay_ms(100);
-			set_movement(3, 50);//forward
-			break;
-		case 3:
-			//set_movement(3,0);
-			//_delay_ms(100);
-			set_movement(3, 50);//forward
-			break;
-		default:
-			break;
-		}
-	}
-*/
-	while(1)
-	{
-		set_movement(0,60);
-		_delay_ms(2000);
-		set_movement(1,60);
-		_delay_ms(2000);
-		set_movement(1,0);
-		_delay_ms(3000);
-	}
-
 
 	while(1)
 	{
 
 		//-----MAIN-----//
-//Start signal: 0, Kill switch: 1, LED: off -> POWER ON
+		//Start signal: 0, Kill switch: 1, LED: off -> POWER ON
 		while(!GPIOReadValue(START_PORT, START_BIT) && GPIOReadValue(KILL_SWITCH_PORT, KILL_SWITCH_BIT))//while not start signal and kill switch signal
 		{
 			//LED = släckt
@@ -220,9 +84,10 @@ int main(void)
 		}
 
 
-//Start signal: 1, Kill switch: 1, LED: on -> STARTED
-			//enable_engines();//gör nåt annat smart!
-		uint32_t sharp;
+		//Start signal: 1, Kill switch: 1, LED: on -> STARTED
+		//enable_engines();//gör nåt annat smart!
+		//uint32_t sharp;
+		set_movement(1, SPEED);//backwards
 		while(GPIOReadValue(START_PORT, START_BIT) && GPIOReadValue(KILL_SWITCH_PORT, KILL_SWITCH_BIT))//while not stop
 		{
 			//LED = TÄND
@@ -230,22 +95,23 @@ int main(void)
 
 			switch(reflexReadAnalog())
 			{
-				case 0:
-					set_movement(1, SPEED);//backwards
-					break;
-				case 1:
-					set_movement(1, SPEED);//backwards
-					break;
-				case 2:
-					set_movement(0, SPEED);//forward
-					break;
-				case 3:
-					set_movement(0, SPEED);//forward
-					break;
-				case 4:
-					//set_movement(2, SPEED);//turn right
-					//if object found in front
-					sharp = sharpRead();
+			case 0:
+				set_movement(1, SPEED);//backwards
+				break;
+			case 1:
+				set_movement(1, SPEED);//backwards
+				break;
+			case 2:
+				set_movement(0, SPEED);//forward
+				break;
+			case 3:
+				set_movement(0, SPEED);//forward
+				break;
+			case 4:
+				//set_movement(2, SPEED);//turn right
+				//if object found in front
+				/*
+					sharp = sharpReadMean();
 					if(sharp == 5 || sharp == 6)
 					{
 						set_movement(0, SPEED);//forward
@@ -259,13 +125,15 @@ int main(void)
 					{
 						set_movement(2, SPEED);//turn left
 					}
-					break;
-				default:
-					break;
-				}
+				 */
+				break;
+
+			default:
+				break;
+			}
 		}
 
-//Start signal: 0, Kill switch: 0, LED: flashing -> STOPPED
+		//Start signal: 0, Kill switch: 0, LED: flashing -> STOPPED
 		while(!GPIOReadValue(START_PORT, START_BIT) && !GPIOReadValue(KILL_SWITCH_PORT, KILL_SWITCH_BIT))
 		{
 			set_movement(0,0);
