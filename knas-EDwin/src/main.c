@@ -25,29 +25,29 @@ __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 
 // TODO: insert other definitions and declarations here
 
-
-void SysTick_Handler(void)
+void SysTick_Handler()
 {
 	msTicks++;
 }
-int main(void)
-{
-	SysTick_Config( SystemCoreClock/1000 );
-	msTicks = 0;
-	printf("EDwin started\n");
 
+int main(void) {
+	SysTick_Config( SystemCoreClock/1000 );
+	printf("Hello World\n");
+	
+	
 	// Enter an infinite loop, just incrementing a counter
-	volatile static int lastRun = 0 ;
+	volatile static uint32_t lastRun = 0;
+	lastRun = msTicks;
 	while(1)
 	{
-		while(lastRun == msTicks); // Wait for msTicks to inc.
+		while(lastRun == msTicks);
 		lastRun = msTicks;
-
-		if( !(msTicks % 1000))
+		if( !(msTicks%2000) )
 		{
 			printf("%i\n",msTicks);
 		}
-		lastRun = msTicks;
+
+
 	}
 	return 0 ;
 }

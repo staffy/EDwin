@@ -7,7 +7,6 @@
 
 #ifndef VARIABLES_H_
 #define VARIABLES_H_
-//uint32_t	msTicks  __attribute__ ((section ("_edata")));
 volatile uint32_t msTicks;
 
 #endif /* VARIABLES_H_ */
