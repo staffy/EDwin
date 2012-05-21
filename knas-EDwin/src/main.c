@@ -21,17 +21,33 @@
 __CRP const unsigned int CRP_WORD = CRP_NO_CRP ;
 
 #include <stdio.h>
+#include "variables.h"
 
 // TODO: insert other definitions and declarations here
 
-int main(void) {
-	
-	printf("Hello World\n");
-	
+
+void SysTick_Handler(void)
+{
+	msTicks++;
+}
+int main(void)
+{
+	SysTick_Config( SystemCoreClock/1000 );
+	msTicks = 0;
+	printf("EDwin started\n");
+
 	// Enter an infinite loop, just incrementing a counter
-	volatile static int i = 0 ;
-	while(1) {
-		i++ ;
+	volatile static int lastRun = 0 ;
+	while(1)
+	{
+		while(lastRun == msTicks); // Wait for msTicks to inc.
+		lastRun = msTicks;
+
+		if( !(msTicks % 1000))
+		{
+			printf("%i\n",msTicks);
+		}
+		lastRun = msTicks;
 	}
 	return 0 ;
 }
