@@ -2,7 +2,7 @@
  * drive.c
  *
  *  Created on: 13 mar 2012
- *      Author: Rickard
+ *  Author: Rickard
  */
 //PWM 1.6 (RXD), 1.7 (TXD)
 #include "drive.h"
@@ -41,16 +41,11 @@ void initDrive(void)
 	return;
 }
 
-void set_speed(int percent)
-{
-	set_speed_left(percent);
-	set_speed_right(percent);
-}
 
 void set_speed_left(int percent)
 {
 	LPC_TMR32B0->MR0 = TimerCount-percent*(TimerCount-0.05*TimerCount)/100;
-	speed_left=percent;
+	return;
 }
 /*
  * Sets the speed by changing the duty cycle of the PWM-signal
@@ -60,30 +55,8 @@ void set_speed_left(int percent)
 void set_speed_right(int percent)		// percent1 = 0 => neutral, percent1 < 0 => reverse, percent1 > 0 => forward ; range: -100 to 100
 {
 	LPC_TMR32B0->MR1 = TimerCount-percent*(TimerCount-0.05*TimerCount)/100;
-	//LPC_TMR16B1->MR1 = 2399-percent*(2399-20)/100;
-	speed_right=percent;
 	return;
 }
-
-void enable_engines(void)
-{
-	GPIOSetValue( right_dir_port, right_enable, 1 );
-	GPIOSetValue( left_dir_port, left_enable, 1 );
-}
-
-void disable_engines(void)
-{
-	GPIOSetValue( right_dir_port, right_enable, 0 );
-	GPIOSetValue( left_dir_port, left_enable, 0 );
-}
-
-void set_direction(int left, int right)
-{
-	GPIOSetValue( right_dir_port, right_dir, right );
-	GPIOSetValue( left_dir_port, left_dir, left );
-}
-
-
 
 void setDrive(int speed, int turn)
 {
@@ -96,7 +69,7 @@ void setDrive(int speed, int turn)
 	// Left motor
 	if( left >= 0)
 	{
-		GPIOSetValue( left_dir_port, left_dir, INVERT_LEFT_MOTOR );
+		GPIOSetValue( LEFT_DIR_PORT, LEFT_DIR_PIN, INVERT_LEFT_MOTOR );
 		if(left > MAX_MOTOR_SPEED) // Speed limit :-)
 		{
 			left = MAX_MOTOR_SPEED;
@@ -105,7 +78,7 @@ void setDrive(int speed, int turn)
 	}
 	else
 	{
-		GPIOSetValue( left_dir_port, left_dir, (INVERT_LEFT_MOTOR ^ 0x01) );
+		GPIOSetValue( LEFT_DIR_PORT, LEFT_DIR_PIN, (INVERT_LEFT_MOTOR ^ 0x01) );
 		left = -left;
 		if(left > MAX_MOTOR_SPEED) // Speed limit :-)
 		{
@@ -117,7 +90,7 @@ void setDrive(int speed, int turn)
 	// Right motor
 	if( right >= 0)
 	{
-		GPIOSetValue( right_dir_port, right_dir, INVERT_RIGHT_MOTOR );
+		GPIOSetValue( RIGHT_DIR_PORT, RIGHT_DIR_PIN, INVERT_RIGHT_MOTOR );
 		if(right > MAX_MOTOR_SPEED) // Speed limit :-)
 		{
 			right = MAX_MOTOR_SPEED;
@@ -127,7 +100,7 @@ void setDrive(int speed, int turn)
 	else
 	{
 		right = -right;
-		GPIOSetValue( right_dir_port, right_dir, (INVERT_RIGHT_MOTOR ^ 0x01) );
+		GPIOSetValue( RIGHT_DIR_PORT, RIGHT_DIR_PIN, (INVERT_RIGHT_MOTOR ^ 0x01) );
 		if(right > MAX_MOTOR_SPEED) // Speed limit :-)
 		{
 			right = MAX_MOTOR_SPEED;
