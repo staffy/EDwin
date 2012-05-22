@@ -36,7 +36,7 @@ void SysTick_Handler()
 int main(void) {
  	SysTick_Config( SystemCoreClock/1000 );
 	initDrive();
-	printf("Hello World\n");
+	//printf("Hello World\n");
 	ADCInit( ADC_CLK );
 	
 	
@@ -48,14 +48,29 @@ int main(void) {
 	{
 		while(lastRun == msTicks);
 		lastRun = msTicks;
-		if( !(msTicks%1000) )
+		if( !(msTicks%60) )
 		{
 			char lines[4], sharp[2];
 			readLineSensors(lines);
 			readSharpSensors(sharp);
 			//printf("Line sensors: %i %i %i %i \nSharp Sensors: %i %i\n\n",lines[0],lines[1],lines[2],lines[3],sharp[0],sharp[1]);
 
-			setDrive(0,0);
+			if(sharp[0] && sharp[1])
+			{
+				setDrive(100, 0);
+			}
+			else if(sharp[1])
+			{
+				setDrive(80, -50);
+			}
+			else if(sharp[0])
+			{
+				setDrive(80, 50);
+			}
+			else
+			{
+				setDrive(0, -20);
+			}
 		}
 
 

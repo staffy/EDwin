@@ -9,7 +9,7 @@
 #define CONFIG_H_
 
 /* Sensor related stuff */
-#define SHARP_SENS_THRES	200
+#define SHARP_SENS_THRES	120
 #define LINE_SENS_THRES		850
 #define INVERTED_DOHOYO
 /*----------------------*/
