@@ -13,8 +13,9 @@
 #include "LPC13xx.h"
 #endif
 #include "gpio.h"
+#include "../config.h"
 
-// User defines
+// Pin definitions
 #define left_dir_port 0
 #define left_dir 6
 #define left_enable 10
@@ -37,8 +38,8 @@ void set_speed(int percent);
 void set_speed_left(int percent);
 void set_speed_right(int percent);
 void set_direction(int left, int right);
-void set_movement(int movement, int speed);
 void enable_engines(void);
 void disable_engines(void);
+void setDrive(int speed, int turn);
 
 #endif /* DRIVE_H_ */

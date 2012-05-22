@@ -15,7 +15,9 @@
 
 
 /* Motor related stuff */
-
+#define INVERT_LEFT_MOTOR 	1
+#define INVERT_RIGHT_MOTOR	0
+#define MAX_MOTOR_SPEED		100
 /*---------------------*/
 
 #endif /* CONFIG_H_ */

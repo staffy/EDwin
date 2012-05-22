@@ -83,27 +83,55 @@ void set_direction(int left, int right)
 	GPIOSetValue( left_dir_port, left_dir, left );
 }
 
-void set_movement(int movement, int speed)
+
+
+void setDrive(int speed, int turn)
 {
-	switch(movement)
+	// positive turn means turning right, positive speed means driving forward
+	int left, right;
+	left = speed-turn;
+	right = speed+turn;
+
+	// Set motor speeds
+	// Left motor
+	if( left >= 0)
 	{
-	case 0:		//Forward
-		set_direction(1,0);
-		set_speed(speed);
-		break;
-	case 1:		//Backward
-		set_direction(0,1);
-		set_speed(speed);
-		break;
-	case 2:		//Left
-		set_direction(0,0);
-		set_speed(speed);
-		break;
-	case 3:		//Right
-		set_direction(1,1);
-		set_speed(speed);
-		break;
-	default:
-		break;
+		GPIOSetValue( left_dir_port, left_dir, INVERT_LEFT_MOTOR );
+		if(left > MAX_MOTOR_SPEED) // Speed limit :-)
+		{
+			left = MAX_MOTOR_SPEED;
+		}
+		set_speed_left(left);
+	}
+	else
+	{
+		GPIOSetValue( left_dir_port, left_dir, (INVERT_LEFT_MOTOR ^ 0x01) );
+		left = -left;
+		if(left > MAX_MOTOR_SPEED) // Speed limit :-)
+		{
+			left = MAX_MOTOR_SPEED;
+		}
+		set_speed_left(left);
+	}
+
+	// Right motor
+	if( right >= 0)
+	{
+		GPIOSetValue( right_dir_port, right_dir, INVERT_RIGHT_MOTOR );
+		if(right > MAX_MOTOR_SPEED) // Speed limit :-)
+		{
+			right = MAX_MOTOR_SPEED;
+		}
+		set_speed_right(right);
+	}
+	else
+	{
+		right = -right;
+		GPIOSetValue( right_dir_port, right_dir, (INVERT_RIGHT_MOTOR ^ 0x01) );
+		if(right > MAX_MOTOR_SPEED) // Speed limit :-)
+		{
+			right = MAX_MOTOR_SPEED;
+		}
+		set_speed_right(right);
 	}
 }
