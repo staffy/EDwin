@@ -58,6 +58,14 @@ int main(void) {
 			values[5] = ADCRead(5);
 			values[6] = ADCRead(6);
 			printf("%i: %i   %i: %i   %i: %i   %i: %i   %i: %i   %i: %i\n",0,values[0],1,values[1],2,values[2],3,values[3],5,values[5],6,values[6]);
+
+
+			char lines[4];
+			readLineSensors(lines);
+			printf("%i %i %i %i\n",lines[0],lines[1],lines[2],lines[3]);
+			int kuk = 0;
+			kuk++;
+
 		}
 
 
