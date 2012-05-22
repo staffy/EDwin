@@ -14,6 +14,25 @@
 #include "drivers/adc.h"
 
 
+void readSharpSensors(char *results)
+{
+	int i, value;
+	for(i = 0; i<2; i++)
+	{
+		value = ADCRead(i+5);
+		if(value > SHARP_SENS_THRES)
+		{
+			results[i] = 1;
+		}
+		else
+		{
+			results[i] = 0;
+		}
+
+	}
+	return;
+}
+
 
 
 void readLineSensors(char *results)

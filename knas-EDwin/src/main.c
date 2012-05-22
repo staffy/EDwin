@@ -50,22 +50,12 @@ int main(void) {
 		lastRun = msTicks;
 		if( !(msTicks%1000) )
 		{
-			uint32_t values[8];
-			int i;
-			for(i = 0; i<4; i++)
-			{
-				values[i] = ADCRead(i);
-			}
-			values[5] = ADCRead(5);
-			values[6] = ADCRead(6);
-			//printf("%i: %i   %i: %i   %i: %i   %i: %i   %i: %i   %i: %i\n",0,values[0],1,values[1],2,values[2],3,values[3],5,values[5],6,values[6]);
-
-
-			char lines[4];
+			char lines[4], sharp[2];
 			readLineSensors(lines);
-			printf("Line sensors: %i %i %i %i\n",lines[0],lines[1],lines[2],lines[3]);
+			readSharpSensors(sharp);
+			//printf("Line sensors: %i %i %i %i \nSharp Sensors: %i %i\n\n",lines[0],lines[1],lines[2],lines[3],sharp[0],sharp[1]);
 
-			setDrive(50,50);
+			setDrive(0,0);
 		}
 
 

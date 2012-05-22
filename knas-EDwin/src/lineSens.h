@@ -10,5 +10,6 @@
 #define LINESENS_H_
 
 void readLineSensors(char *results);
+void readSharpSensors(char *results);
 
 #endif /* LINESENS_H_ */
